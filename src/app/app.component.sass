@@ -1,0 +1,78 @@
+
+.content
+    display: flex
+    margin: 82px auto 32px
+    padding: 0 16px
+    max-width: 960px
+    flex-direction: column
+    align-items: center  
+    min-height: calc(50vh)  
+
+.toolbar
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 60px
+    display: flex
+    align-items: center
+    background-color: #1976d2
+    color: white
+    font-weight: 600
+
+    & img
+        margin: 0 16px
+
+    & #twitter-logo
+        height: 40px
+        margin: 0 8px
+
+    & #youtube-logo
+        height: 40px
+        margin: 0 16px
+
+    & #twitter-logo:hover,
+
+    & #youtube-logo:hover
+        opacity: 0.8
+
+footer
+    margin-top: 8px
+    display: flex
+    align-items: center
+    line-height: 20px
+    background-color: #1976d2
+    width: 100%
+
+.left-text
+    color: #ffffff
+    padding-left: 10px
+
+footer a
+    display: flex
+    align-items: center
+
+.circle-link
+    height: 40px
+    width: 40px
+    border-radius: 40px
+    margin: 8px
+    background-color: white
+    border: 1px solid #eeeeee
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)
+    transition: 1s ease-out
+
+    &:hover
+        transform: translateY(-0.25rem)
+        box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2)
+
+svg#clouds
+    position: fixed
+    bottom: -160px
+    left: -230px
+    z-index: -10
+    width: 1920px
