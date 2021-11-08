@@ -1,0 +1,30 @@
+<div class="content">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="calendar-avatar"></div>
+            <mat-card-title>Check for date</mat-card-title>
+            <mat-card-subtitle>Find out if you are on shift!</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Select a Date</mat-label>
+                <input matInput #input [matDatepicker]="picker" placeholder="Select a Date" (focus)="picker.open()"
+                    (dateChange)="checkShift('change', $event);input.blur()" [min]="minDate" [(ngModel)]="today">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker (closed)="input.blur()" [startAt]="today"></mat-datepicker>
+            </mat-form-field>
+            <br>
+            <div *ngIf="input.value != ''">
+                <span>You selected: <strong>{{input.value}}</strong></span><br><br>
+            </div>
+            <span>Days Difference: <strong>{{daysDifference}}</strong></span><br>
+            <div *ngIf="input.value != ''">
+                <br>
+                <span *ngIf="input.value != ''">
+                    <h1>You are <strong>{{onShift ? 'On Shift' : 'Off Shift'}}</strong></h1>
+                </span>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
