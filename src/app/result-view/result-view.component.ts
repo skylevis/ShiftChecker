@@ -57,12 +57,12 @@ export class ResultViewComponent implements OnInit {
     [...Array(forecastLength).keys()].map( offset => {
       console.log(this.dataSource);
       let elementDate = new Date(selectedDate.getTime() + (1000 * 60 * 60 * 24 * offset));
-      let elementOnShift = this.calculateOnShift(this.daysDifference + offset);
+      let elementOnShift = this.calculateOnShift(daysDifference + offset);
       this.dataSource.push({date: elementDate, onShift: elementOnShift});
     });
   }
 
   ngOnInit(): void {
-    this.generateDataSource(this.today, 0);
+    this.generateDataSource(this.today, this.calculateDiff(this.minDate, this.today));
   }
 }
