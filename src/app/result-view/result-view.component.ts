@@ -33,7 +33,7 @@ export class ResultViewComponent implements OnInit {
     }
     this.daysDifference = this.calculateDiff(this.minDate, selectedDate);
     this.onShift = this.calculateOnShift(this.daysDifference)
-    this.generateDataSource(selectedDate);
+    this.generateDataSource(selectedDate, this.daysDifference);
   }
 
   calculateDiff(date1: Date, date2: Date) {
@@ -52,7 +52,7 @@ export class ResultViewComponent implements OnInit {
     }
   }
 
-  generateDataSource(selectedDate: Date) {
+  generateDataSource(selectedDate: Date, daysDifference: number) {
     this.dataSource = [];
     [...Array(forecastLength).keys()].map( offset => {
       console.log(this.dataSource);
@@ -63,6 +63,6 @@ export class ResultViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.generateDataSource(this.today);
+    this.generateDataSource(this.today, 0);
   }
 }
