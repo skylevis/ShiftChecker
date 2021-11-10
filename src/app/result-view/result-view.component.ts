@@ -64,5 +64,6 @@ export class ResultViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateDataSource(this.today, this.calculateDiff(this.minDate, this.today));
+    this.onShift = this.dataSource[0].onShift ?? false;
   }
 }
