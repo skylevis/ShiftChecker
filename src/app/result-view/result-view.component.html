@@ -24,6 +24,9 @@
                 <br>
                 <span *ngIf="input.value != ''" [className]="onShift ? 'blue' : 'green'">
                     <h1>You are <strong>{{onShift ? 'On Shift' : 'Off Shift'}}</strong></h1>
+                    <span *ngIf="onShift" [className]="shiftType == 'Day Shift' ? 'orange' : shiftType == 'Night Shift' ? 'purple' : 'aqua'">
+                        <h2><strong>{{shiftType}}</strong></h2>
+                    </span>
                 </span>
             </div>
         </mat-card-content>
@@ -32,22 +35,22 @@
     <div *ngIf="dataSource.length != 0">
         <span><h2>Next Week Forecast</h2></span>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <!-- Position Column -->
+            <!-- Date Column -->
             <ng-container matColumnDef="Date">
               <th mat-header-cell *matHeaderCellDef> Date </th>
               <td mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
           
-            <!-- Name Column -->
+            <!-- Day Column -->
             <ng-container matColumnDef="Day">
               <th mat-header-cell *matHeaderCellDef> Day </th>
               <td mat-cell *matCellDef="let element"> {{element.date | date: 'EEEE'}} </td>
             </ng-container>
           
-            <!-- Weight Column -->
+            <!-- Shift Info Column -->
             <ng-container matColumnDef="On Shift?">
               <th mat-header-cell *matHeaderCellDef> On Shift? </th>
-              <td mat-cell *matCellDef="let element" [className]="element.onShift ? 'blue' : 'green'"> {{element.onShift ? 'Yes' : 'No'}} </td>
+              <td mat-cell *matCellDef="let element" [className]="element.onShift ? 'blue' : 'green'"> {{element.onShift ? 'Yes (' + getShortFormShiftType(element.shiftType) + ')' : 'No'}} </td>
             </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
